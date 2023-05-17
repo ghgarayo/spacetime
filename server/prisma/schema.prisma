@@ -1,0 +1,22 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Definiremos a tabela do DB neste arquivo usando a keyword model
+// Nem todos os bancos chamam de tabela, entao model é uma forma de 
+// generalizar entre todos os DBs.
+
+model User {
+  // @id define como PK
+  // gera randomicamente um identificador único universal
+  id   String @id @default(uuid())
+  nome String
+}
